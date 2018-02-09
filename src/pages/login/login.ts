@@ -35,6 +35,7 @@ export class LoginPage {
   logar(){
     
     this.logindao.login(this.email, this.senha).subscribe(ret =>{
+
       if(ret.status == 'erro'){
         let alert = this.alertCtrl.create({
           title: 'LOGIN',
@@ -46,7 +47,9 @@ export class LoginPage {
         this.storage.set('status', 1);
         this.navCtrl.setRoot(TabsPage);
       }
+      console.log(ret);
     });
+    ;
     
   }
 

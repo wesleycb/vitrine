@@ -30,8 +30,10 @@ export class PasseioPage {
     });
   }
   sair() {
-    this.storage.set('status', 0);
-    this.navCtrl.setRoot(LoginPage);
+    this.storage.set('status', 0).then(data =>{
+      this.navCtrl.setRoot(LoginPage);
+    });
+    
   }
 
 
