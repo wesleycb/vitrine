@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import 'rxjs/add/operator/map';
 /*
   Generated class for the LoginProvider provider.
 
@@ -17,12 +17,13 @@ export class LoginProvider {
     this.dados.em = '';
     this.dados.pa = '';
   }
-  login(emails:any,senha:any){
+  login(emails:any,senha:any):any{
     let envio:any;
     this.dados.em = emails;
     this.dados.pa = senha;
     envio = JSON.stringify({email: this.dados.em, password: this.dados.pa});
     return this.http.post(this.url, envio);
   }
-
 }
+
+

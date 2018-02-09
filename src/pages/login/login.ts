@@ -33,13 +33,20 @@ export class LoginPage {
   }
 
   logar(){
+    if(this.email == '' && this.senha == ''){
+      let alert = this.alertCtrl.create({
+        title: 'LOGIN',
+        subTitle: "Você precisa digitar algo",
+        buttons: ['OK']
+      });
+    }else{
     
-    this.logindao.login(this.email, this.senha).subscribe(ret =>{
-
-      if(ret.status == 'erro'){
+    this.logindao.login(this.email, this.senha).subscribe(retorno =>{
+      console.log(retorno);
+     if(retorno.status == "erro"){
         let alert = this.alertCtrl.create({
           title: 'LOGIN',
-          subTitle: ret.msg,
+          subTitle: "Usuário ou senha Incorretos",
           buttons: ['OK']
         });
         alert.present();
@@ -47,10 +54,8 @@ export class LoginPage {
         this.storage.set('status', 1);
         this.navCtrl.setRoot(TabsPage);
       }
-      console.log(ret);
     });
-    ;
-    
+  }
   }
 
 }
